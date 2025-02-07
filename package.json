@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "prepare": "tsc && build && node ./build/index.mjs",
+    "start": "nodemon --watch \"./package.json\" --watch \"./tsconfig.json\" --watch \"./source/\" --watch \"./static/\" --ext \"*\" --exec \"npm run prepare && caddy file-server --root ./build/static/ --domain localhost\"",
+    "test": "npm run prepare && prettier --check \"./package.json\" \"./tsconfig.json\" \"./source/\""
+  },
+  "prettier": {},
+  "devDependencies": {
+    "@radically-straightforward/development": "^1.0.50",
+    "@radically-straightforward/production": "^1.0.34",
+    "electron": "^34.1.1",
+    "nodemon": "^3.1.9",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.3"
+  }
+}
