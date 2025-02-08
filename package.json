@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "prepare": "tsc && build && node ./build/index.mjs",
-    "start": "nodemon --watch \"./package.json\" --watch \"./tsconfig.json\" --watch \"./source/\" --watch \"./static/\" --ext \"*\" --exec \"npm run prepare\"",
+    "prepare": "tsc && build && node ./build/renderer.mjs",
+    "start": "nodemon --watch \"./package.json\" --watch \"./tsconfig.json\" --watch \"./source/\" --watch \"./static/\" --ext \"*\" --exec \"npm run prepare && electron ./build/main.mts\"",
     "test": "npm run prepare && prettier --check \"./package.json\" \"./tsconfig.json\" \"./source/\""
   },
   "devDependencies": {
