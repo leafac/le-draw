@@ -62,7 +62,7 @@ await fs.writeFile(
                       const point3 = path.points[pointsIndex];
                       const point4 = path.points[pointsIndex + 1] ?? path.points[pointsIndex];
                       const point2Control = { x: point2.x + (point3.x - point1.x) * smooth, y: point2.y + (point3.y - point1.y) * smooth };
-                      const point3Control = { x: point3.x + (point4.x - point2.x) * smooth, y: point3.y + (point4.y - point2.y) * smooth };
+                      const point3Control = { x: point3.x - (point4.x - point2.x) * smooth, y: point3.y - (point4.y - point2.y) * smooth };
                       return \`C \${point2Control.x},\${point2Control.y} \${point3Control.x},\${point3Control.y} \${point3.x},\${point3.y}\`;
                     }).join(" ")}\`
                   );
