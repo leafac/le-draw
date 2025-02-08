@@ -3,6 +3,12 @@ import path from "node:path";
 
 (async () => {
   await electron.app.whenReady();
+  const tray = new electron.Tray(
+    path.join(import.meta.dirname, "./static/tray.png"),
+  );
+  tray.addListener("click", () => {
+    browserWindow.show();
+  });
   const browserWindow = new electron.BrowserWindow({
     transparent: true,
     hasShadow: false,
