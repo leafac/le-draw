@@ -61,7 +61,7 @@ await fs.writeFile(
                       const previousPoint = path.points[pointsIndex - 1];
                       const point = path.points[pointsIndex];
                       const nextPoint = path.points[pointsIndex + 1] ?? path.points[pointsIndex];
-                      const smooth = 0.2;
+                      const smooth = 0.1;
                       const pointControl = previousPoint === undefined ? point : { x: point.x - (nextPoint.x - previousPoint.x) * smooth, y: point.y - (nextPoint.y - previousPoint.y) * smooth };
                       return \`\${pointControl.x},\${pointControl.y} \${point.x},\${point.y}\`;
                     }).join(" ")}\`
