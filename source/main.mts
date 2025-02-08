@@ -3,7 +3,6 @@ import path from "node:path";
 
 (async () => {
   await electron.app.whenReady();
-
   const browserWindow = new electron.BrowserWindow({
     transparent: true,
     hasShadow: false,
