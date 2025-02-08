@@ -23,16 +23,26 @@ await fs.writeFile(
       `}"
     >
       <head>
-        <link rel="stylesheet" href="/${caddy.staticFiles["index.css"]}" />
-        <script src="/${caddy.staticFiles["index.mjs"]}"></script>
+        <link rel="stylesheet" href="./${caddy.staticFiles["index.css"]}" />
+        <script src="./${caddy.staticFiles["index.mjs"]}"></script>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
         <title>Lê-draw</title>
       </head>
-      <body>
-        <svg>
+      <body
+        css="${css`
+          position: fixed;
+          inset: var(--size--0);
+        `}"
+      >
+        <svg
+          css="${css`
+            width: 100%;
+            height: 100%;
+          `}"
+        >
           <rect
             x="10"
             y="10"
