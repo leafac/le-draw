@@ -45,7 +45,6 @@ await fs.writeFile(
             cursor: crosshair;
           `}"
           javascript="${javascript`
-            const smooth = 0.2;
             this.color = "var(--color--black)";
             this.onmousedown = (event) => {
               if (event.button === 0) {
@@ -62,6 +61,7 @@ await fs.writeFile(
                       const previousPoint = path.points[pointsIndex - 1];
                       const point = path.points[pointsIndex];
                       const nextPoint = path.points[pointsIndex + 1] ?? path.points[pointsIndex];
+                      const smooth = 0.2;
                       const pointControl = previousPoint === undefined ? point : { x: point.x - (nextPoint.x - previousPoint.x) * smooth, y: point.y - (nextPoint.y - previousPoint.y) * smooth };
                       return \`\${pointControl.x},\${pointControl.y} \${point.x},\${point.y}\`;
                     }).join(" ")}\`
