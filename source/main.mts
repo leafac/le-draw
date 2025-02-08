@@ -9,7 +9,8 @@ import path from "node:path";
     show: false,
   });
   browserWindow.setSimpleFullScreen(true);
-  browserWindow.setAlwaysOnTop(true);
+  browserWindow.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
+  browserWindow.setAlwaysOnTop(true, "screen-saver", 1);
   await browserWindow.loadFile(
     path.join(import.meta.dirname, "./static/index.html"),
   );

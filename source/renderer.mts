@@ -42,7 +42,6 @@ await fs.writeFile(
           css="${css`
             width: 100%;
             height: 100%;
-            cursor: crosshair;
           `}"
           javascript="${javascript`
             this.color = "var(--color--black)";
