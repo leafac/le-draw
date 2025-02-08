@@ -56,9 +56,9 @@ await fs.writeFile(
                   path.points.push({ x: event.clientX, y: event.clientY });
                   path.setAttribute(
                     "d",
-                    \`M \${path.points[0].x},\${path.points[0].y} \${[...path.points.keys()].slice(1).map((pointsIndex) => {
-                      const point1 = path.points[pointsIndex - 2] ?? path.points[pointsIndex - 1];
-                      const point2 = path.points[pointsIndex - 1];
+                    \`M \${path.points[0].x},\${path.points[0].y} \${[...path.points.keys()].map((pointsIndex) => {
+                      const point1 = path.points[pointsIndex - 2] ?? path.points[pointsIndex - 1] ?? path.points[pointsIndex];
+                      const point2 = path.points[pointsIndex - 1] ?? path.points[pointsIndex];
                       const point3 = path.points[pointsIndex];
                       const point4 = path.points[pointsIndex + 1] ?? path.points[pointsIndex];
                       const point2Control = { x: point2.x + (point3.x - point1.x) * smooth, y: point2.y + (point3.y - point1.y) * smooth };
