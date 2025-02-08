@@ -46,7 +46,7 @@ await fs.writeFile(
           javascript="${javascript`
             this.onmousedown = (event) => {
               if (event.button === 0) {
-                this.insertAdjacentHTML("beforeend", html\`<path stroke="red" fill="transparent" d="M \${String(event.clientX)},\${String(event.clientY)}" />\`);
+                this.insertAdjacentHTML("beforeend", html\`<path stroke="red" stroke-width="2" fill="transparent" d="M \${String(event.clientX)},\${String(event.clientY)}" />\`);
                 const path = this.lastElementChild;
                 this.onmousemove = (event) => {
                   path.setAttribute("d", path.getAttribute("d") + \` L \${String(event.clientX)},\${String(event.clientY)}\`);
