@@ -53,8 +53,8 @@ await fs.writeFile(
                 path.points = [];
                 this.onmousemove = (event) => {
                   const previousPoint = path.points.at(-1);
-                  if (previousPoint === undefined || 2 < Math.sqrt((event.clientX - previousPoint.x) ** 2 + (event.clientY - previousPoint.y) ** 2))
-                    path.points.push({ x: event.clientX, y: event.clientY });
+                  if (previousPoint !== undefined && Math.sqrt((event.clientX - previousPoint.x) ** 2 + (event.clientY - previousPoint.y) ** 2) < 3) return;
+                  path.points.push({ x: event.clientX, y: event.clientY });
                   path.setAttribute(
                     "d",
                     \`M \${path.points[0].x},\${path.points[0].y} S \${[...path.points.keys()].map((pointsIndex) => {
