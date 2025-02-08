@@ -44,9 +44,10 @@ await fs.writeFile(
             height: 100%;
           `}"
           javascript="${javascript`
+            this.color = "black";
             this.onmousedown = (event) => {
               if (event.button === 0) {
-                this.insertAdjacentHTML("beforeend", html\`<path stroke="red" stroke-width="2" fill="transparent" d="M \${String(event.clientX)},\${String(event.clientY)}" />\`);
+                this.insertAdjacentHTML("beforeend", html\`<path stroke="\${this.color}" stroke-width="2" fill="transparent" d="M \${String(event.clientX)},\${String(event.clientY)}" />\`);
                 const path = this.lastElementChild;
                 this.onmousemove = (event) => {
                   path.setAttribute("d", path.getAttribute("d") + \` L \${String(event.clientX)},\${String(event.clientY)}\`);
@@ -56,6 +57,11 @@ await fs.writeFile(
                   this.onmouseup = undefined;
                 };
               }
+            };
+            document.onkeydown = (event) => {
+              if (event.key === "1") this.color = "black";
+              else if (event.key === "2") this.color = "red";
+              else if (event.key === "0") this.color = "white";
             };
           `}"
         ></svg>
