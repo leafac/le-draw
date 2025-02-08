@@ -6,6 +6,7 @@ import path from "node:path";
   const browserWindow = new electron.BrowserWindow({
     transparent: true,
     hasShadow: false,
+    show: false,
   });
   browserWindow.setSimpleFullScreen(true);
   browserWindow.setAlwaysOnTop(true);
