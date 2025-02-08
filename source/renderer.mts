@@ -45,7 +45,7 @@ await fs.writeFile(
             cursor: crosshair;
           `}"
           javascript="${javascript`
-            const smooth = 0.3;
+            const smooth = 0.2;
             this.color = "var(--color--black)";
             this.onmousedown = (event) => {
               if (event.button === 0) {
@@ -56,14 +56,12 @@ await fs.writeFile(
                   path.points.push({ x: event.clientX, y: event.clientY });
                   path.setAttribute(
                     "d",
-                    \`M \${path.points[0].x},\${path.points[0].y} \${[...path.points.keys()].map((pointsIndex) => {
-                      const point1 = path.points[pointsIndex - 2] ?? path.points[pointsIndex - 1] ?? path.points[pointsIndex];
-                      const point2 = path.points[pointsIndex - 1] ?? path.points[pointsIndex];
-                      const point3 = path.points[pointsIndex];
-                      const point4 = path.points[pointsIndex + 1] ?? path.points[pointsIndex];
-                      const point2Control = { x: point2.x + (point3.x - point1.x) * smooth, y: point2.y + (point3.y - point1.y) * smooth };
-                      const point3Control = { x: point3.x - (point4.x - point2.x) * smooth, y: point3.y - (point4.y - point2.y) * smooth };
-                      return \`C \${point2Control.x},\${point2Control.y} \${point3Control.x},\${point3Control.y} \${point3.x},\${point3.y}\`;
+                    \`M \${path.points[0].x},\${path.points[0].y} S \${[...path.points.keys()].map((pointsIndex) => {
+                      const previousPoint = path.points[pointsIndex - 1];
+                      const point = path.points[pointsIndex];
+                      const nextPoint = path.points[pointsIndex + 1] ?? path.points[pointsIndex];
+                      const pointControl = previousPoint === undefined ? point : { x: point.x - (nextPoint.x - previousPoint.x) * smooth, y: point.y - (nextPoint.y - previousPoint.y) * smooth };
+                      return \`\${pointControl.x},\${pointControl.y} \${point.x},\${point.y}\`;
                     }).join(" ")}\`
                   );
                 };
