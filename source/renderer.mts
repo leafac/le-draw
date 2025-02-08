@@ -50,19 +50,22 @@ await fs.writeFile(
               if (event.button === 0) {
                 this.insertAdjacentHTML("beforeend", html\`<path stroke="\${this.color}" stroke-width="2" fill="transparent" d="M \${String(event.clientX)},\${String(event.clientY)}" />\`);
                 const path = this.lastElementChild;
+                path.points = [];
                 this.onmousemove = (event) => {
-                  path.setAttribute("d", path.getAttribute("d") + \` L \${String(event.clientX)},\${String(event.clientY)}\`);
+                  path.points.push({ x: event.clientX, y: event.clientY });
+                  path.setAttribute("d", \`M \${path.points[0].x},\${path.points[0].y} L \${path.points.slice(1).map((point) => \`\${point.x},\${point.y}\`).join(" ")}\`);
                 };
                 this.onmouseup = () => {
                   this.onmousemove = undefined;
                   this.onmouseup = undefined;
                 };
+                this.onmousemove(event);
               }
               else if (event.button === 2) {
                 this.onmousemove = (event) => {
                   paths: for (const path of this.children)
-                    for (const { groups: coordinate } of path.getAttribute("d").matchAll(/(?<x>\\d+),(?<y>\\d+)/g))
-                      if (Math.sqrt((event.clientX - Number(coordinate.x)) ** 2 + (event.clientY - Number(coordinate.y)) ** 2) < 10) {
+                    for (const point of path.points)
+                      if (Math.sqrt((event.clientX - point.x) ** 2 + (event.clientY - point.y) ** 2) < 10) {
                         path.remove();
                         continue paths;
                       }
