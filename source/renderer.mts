@@ -57,6 +57,21 @@ await fs.writeFile(
                   this.onmouseup = undefined;
                 };
               }
+              else if (event.button === 2) {
+                this.onmousemove = (event) => {
+                  paths: for (const path of this.children)
+                    for (const { groups: coordinate } of path.getAttribute("d").matchAll(/(?<x>\d+),(?<y>\d+)/g))
+                      if (Math.sqrt((event.clientX - Number(coordinate.x)) ** 2 + (event.clientY - Number(coordinate.y)) ** 2) < 10) {
+                        path.remove();
+                        continue paths;
+                      }
+                };
+                this.onmouseup = () => {
+                  this.onmousemove = undefined;
+                  this.onmouseup = undefined;
+                };
+                this.onmousemove(event);
+              }
             };
             document.onkeydown = (event) => {
               if (event.key === "1") this.color = "var(--color--black)";
