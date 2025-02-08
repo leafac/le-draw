@@ -12,4 +12,8 @@ import path from "node:path";
   await browserWindow.loadFile(
     path.join(import.meta.dirname, "./static/index.html"),
   );
+  electron.globalShortcut.register("Control+Option+Command+Space", () => {
+    if (browserWindow.isVisible()) browserWindow.hide();
+    else browserWindow.show();
+  });
 })();
