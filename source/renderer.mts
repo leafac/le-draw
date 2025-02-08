@@ -11,6 +11,7 @@ css`
 
 javascript`
   import * as javascript from "@radically-straightforward/javascript/static/index.mjs";
+  import html from "@radically-straightforward/html";
 `;
 
 await fs.writeFile(
@@ -42,17 +43,22 @@ await fs.writeFile(
             width: 100%;
             height: 100%;
           `}"
-        >
-          <rect
-            x="10"
-            y="10"
-            width="30"
-            height="30"
-            stroke="black"
-            fill="white"
-            stroke-width="5"
-          />
-        </svg>
+          javascript="${javascript`
+            this.onmousedown = (event) => {
+              if (event.button === 0) {
+                this.insertAdjacentHTML("beforeend", html\`<path stroke="red" fill="transparent" d="M \${String(event.clientX)},\${String(event.clientY)}" />\`);
+                const path = this.lastElementChild;
+                this.onmousemove = (event) => {
+                  path.setAttribute("d", path.getAttribute("d") + \` L \${String(event.clientX)},\${String(event.clientY)}\`);
+                };
+                this.onmouseup = () => {
+                  this.onmousemove = undefined;
+                  this.onmouseup = undefined;
+                };
+              }
+            };
+          `}"
+        ></svg>
       </body>
     </html>
   `,

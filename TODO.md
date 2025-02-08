@@ -6,3 +6,4 @@
 - Erase
 - Undo/redo
 - Smooth
+- Multiple monitors
