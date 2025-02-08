@@ -48,7 +48,7 @@ await fs.writeFile(
             this.color = "var(--color--black)";
             this.onmousedown = (event) => {
               if (event.button === 0) {
-                this.insertAdjacentHTML("beforeend", html\`<path stroke="\${this.color}" stroke-width="2" fill="transparent" d="M \${String(event.clientX)},\${String(event.clientY)}" />\`);
+                this.insertAdjacentHTML("beforeend", html\`<path stroke="\${this.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" fill="transparent" d="M \${String(event.clientX)},\${String(event.clientY)}" />\`);
                 const path = this.lastElementChild;
                 path.points = [];
                 this.onmousemove = (event) => {
