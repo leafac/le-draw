@@ -60,7 +60,7 @@ await fs.writeFile(
               else if (event.button === 2) {
                 this.onmousemove = (event) => {
                   paths: for (const path of this.children)
-                    for (const { groups: coordinate } of path.getAttribute("d").matchAll(/(?<x>\d+),(?<y>\d+)/g))
+                    for (const { groups: coordinate } of path.getAttribute("d").matchAll(/(?<x>\\d+),(?<y>\\d+)/g))
                       if (Math.sqrt((event.clientX - Number(coordinate.x)) ** 2 + (event.clientY - Number(coordinate.y)) ** 2) < 10) {
                         path.remove();
                         continue paths;
