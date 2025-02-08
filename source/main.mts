@@ -1,9 +1,13 @@
 import electron from "electron";
+import path from "node:path";
 
 (async () => {
   await electron.app.whenReady();
 
-  new electron.BrowserWindow({ width: 800, height: 600 }).loadFile(
-    "./static/index.html",
+  const browserWindow = new electron.BrowserWindow({ transparent: true });
+  browserWindow.setSimpleFullScreen(true);
+  browserWindow.setAlwaysOnTop(true);
+  await browserWindow.loadFile(
+    path.join(import.meta.dirname, "./static/index.html"),
   );
 })();
