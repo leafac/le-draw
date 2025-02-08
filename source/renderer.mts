@@ -53,7 +53,7 @@ await fs.writeFile(
                 path.points = [];
                 this.onmousemove = (event) => {
                   path.points.push({ x: event.clientX, y: event.clientY });
-                  path.setAttribute("d", \`M \${path.points[0].x},\${path.points[0].y} L \${path.points.slice(1).map((point) => \`\${point.x},\${point.y}\`).join(" ")}\`);
+                  path.setAttribute("d", \`M \${path.points.map((point) => \`\${point.x},\${point.y}\`).join(" ")}\`);
                 };
                 this.onmouseup = () => {
                   this.onmousemove = undefined;
