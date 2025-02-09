@@ -1,5 +1,7 @@
 # TODO
 
+- `“Le-draw.app” is damaged and can’t be opened. You should move it to the Trash.`
+  - `xattr -c ./Le-draw.app`
 - Homebrew
 
 ## Good to have
