@@ -30,7 +30,6 @@ await fs.writeFile(
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
-        <title>Lê-draw</title>
       </head>
       <body
         css="${css`
@@ -99,7 +98,7 @@ await fs.writeFile(
               else if (event.key === "8") this.color = "var(--color--indigo--500)";
               else if (event.key === "9") this.color = "var(--color--pink--500)";
               else if (event.key === "0") this.color = "var(--color--white)";
-              else if (event.key === " ") this.innerHTML = html\`\`;
+              else if (event.key === "Backspace") this.innerHTML = html\`\`;
             };
           `}"
         ></svg>
