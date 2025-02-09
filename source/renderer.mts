@@ -44,7 +44,7 @@ await fs.writeFile(
             height: 100%;
           `}"
           javascript="${javascript`
-            this.color = "var(--color--black)";
+            this.color = "var(--color--red--500)";
             this.onmousedown = (event) => {
               if (event.button === 0) {
                 this.insertAdjacentHTML("beforeend", html\`<path stroke="\${this.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" fill="transparent" />\`);
