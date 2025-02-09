@@ -7,6 +7,12 @@ Le-draw
 
 <p align="center"><img src="./assets/screenshot.png" width="600"></p>
 
+## Installation
+
+```console
+$ brew install leafac/le-draw/le-draw
+```
+
 ## Keyboard shortcuts
 
 |                       |            |
