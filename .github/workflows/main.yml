@@ -11,10 +11,10 @@ jobs:
           npm install-ci-test
           cd ./build/
           echo "{ \"main\": \"./main.mjs\" }" > ./package.json
-          ../node_modules/.bin/electron-packager . \"Lê-draw\" --icon ../assets/logo.icns --overwrite
-          cd ./Lê-draw-darwin-arm64/
-          zip --recurse-paths --symlinks ./Lê-draw.app.zip ./Lê-draw.app
-          tar -czf ./Lê-draw.app.tar.gz ./Lê-draw.app/
+          ../node_modules/.bin/electron-packager . \"Le-draw\" --icon ../assets/logo.icns --overwrite
+          cd ./Le-draw-darwin-arm64/
+          zip --recurse-paths --symlinks ./Le-draw.app.zip ./Le-draw.app
+          tar -czf ./Le-draw.app.tar.gz ./Le-draw.app/
       - uses: actions/upload-artifact@main
         with:
           path: ./kill-the-newsletter--${{ matrix.os }}--${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || github.sha }}.${{ matrix.os == 'windows' && 'zip' || 'tar.gz' }}
