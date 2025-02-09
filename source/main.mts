@@ -30,7 +30,14 @@ let tray: electron.Tray;
     path.join(import.meta.dirname, "./static/index.html"),
   );
   electron.globalShortcut.register("Control+Option+Command+Space", () => {
-    if (browserWindow.isVisible()) browserWindow.hide();
-    else browserWindow.show();
+    if (browserWindow.isVisible()) {
+      browserWindow.hide();
+      tray.setImage(path.join(import.meta.dirname, "./static/tray.png"));
+    } else {
+      browserWindow.show();
+      tray.setImage(
+        path.join(import.meta.dirname, "./static/tray--active.png"),
+      );
+    }
   });
 })();
