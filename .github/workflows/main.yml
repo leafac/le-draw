@@ -13,7 +13,7 @@ jobs:
           echo "{ \"main\": \"./main.mjs\" }" > ./package.json
           ../node_modules/.bin/electron-packager . \"Le-draw\" --icon ../assets/logo.icns --overwrite
           cd ./Le-draw-darwin-arm64/
-          codesign --force -s - Le-draw.app
+          codesign --force --deep -s - Le-draw.app
           zip --recurse-paths --symlinks ./Le-draw.app.zip ./Le-draw.app
       - uses: actions/upload-artifact@main
         with:
