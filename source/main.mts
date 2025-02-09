@@ -5,9 +5,19 @@ let tray: electron.Tray;
 (async () => {
   await electron.app.whenReady();
   tray = new electron.Tray(path.join(import.meta.dirname, "./static/tray.png"));
-  tray.addListener("click", () => {
-    browserWindow.show();
-  });
+  tray.setContextMenu(
+    electron.Menu.buildFromTemplate([
+      {
+        label: "Show/hide drawing",
+        accelerator: "Control+Option+Command+Space",
+        enabled: false,
+      },
+      { label: "Colors", accelerator: "1", enabled: false },
+      { label: "Clear drawing", accelerator: "Backspace", enabled: false },
+      { type: "separator" },
+      { role: "quit" },
+    ]),
+  );
   const browserWindow = new electron.BrowserWindow({
     transparent: true,
     hasShadow: false,
