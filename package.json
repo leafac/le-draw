@@ -1,8 +1,6 @@
 {
-  "name": "Lê-draw",
-  "main": "./build/main.mjs",
   "scripts": {
-    "prepare": "tsc && build --copy-without-hash \"./static/\" && node ./build/renderer.mjs && electron-packager ./build/",
+    "prepare": "tsc && build --copy-without-hash \"./static/\" && node ./build/renderer.mjs && cd ./build/ && echo '{ \"main\": \"./main.mjs\" }' > ./package.json && electron-packager . \"Lê-draw\"",
     "start": "nodemon --watch \"./package.json\" --watch \"./tsconfig.json\" --watch \"./source/\" --watch \"./static/\" --ext \"*\" --exec \"npm run prepare && electron ./build/main.mjs\"",
     "test": "npm run prepare && prettier --check \"./package.json\" \"./tsconfig.json\" \"./source/\""
   },
