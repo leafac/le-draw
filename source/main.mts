@@ -1,11 +1,10 @@
 import electron from "electron";
 import path from "node:path";
 
+let tray: electron.Tray;
 (async () => {
   await electron.app.whenReady();
-  const tray = new electron.Tray(
-    path.join(import.meta.dirname, "./static/tray.png"),
-  );
+  tray = new electron.Tray(path.join(import.meta.dirname, "./static/tray.png"));
   tray.addListener("click", () => {
     browserWindow.show();
   });
