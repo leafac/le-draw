@@ -4,7 +4,9 @@ import path from "node:path";
 let tray: electron.Tray;
 (async () => {
   await electron.app.whenReady();
-  tray = new electron.Tray(path.join(import.meta.dirname, "./static/tray.png"));
+  tray = new electron.Tray(
+    path.join(import.meta.dirname, "./static/tray--Template.png"),
+  );
   tray.setContextMenu(
     electron.Menu.buildFromTemplate([
       {
@@ -32,11 +34,13 @@ let tray: electron.Tray;
   electron.globalShortcut.register("Control+Option+Command+Space", () => {
     if (browserWindow.isVisible()) {
       browserWindow.hide();
-      tray.setImage(path.join(import.meta.dirname, "./static/tray.png"));
+      tray.setImage(
+        path.join(import.meta.dirname, "./static/tray--Template.png"),
+      );
     } else {
       browserWindow.show();
       tray.setImage(
-        path.join(import.meta.dirname, "./static/tray--active.png"),
+        path.join(import.meta.dirname, "./static/tray--active--Template.png"),
       );
     }
   });
