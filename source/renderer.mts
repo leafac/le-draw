@@ -46,8 +46,7 @@ await fs.writeFile(
             this.color = "var(--color--red--500)";
             this.onmousedown = (event) => {
               if (event.button === 0) {
-                this.insertAdjacentHTML("beforeend", html\`<path stroke="\${this.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" fill="transparent" />\`);
-                const path = this.lastElementChild;
+                const path = javascript.execute(this.insertAdjacentElement("beforeend", javascript.stringToElement(html\`<path stroke="\${this.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" fill="transparent" />\`, { svg: true })));
                 path.points = [];
                 this.onmousemove = (event) => {
                   const previousPoint = path.points.at(-1);
