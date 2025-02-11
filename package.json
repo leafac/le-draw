@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "prepare": "tsc && build --copy-without-hash \"./static/\" && node ./build/renderer.mjs",
-    "start": "nodemon --watch \"./package.json\" --watch \"./tsconfig.json\" --watch \"./source/\" --watch \"./static/\" --ext \"*\" --exec \"npm run prepare && electron ./build/main.mjs\"",
-    "test": "npm run prepare && prettier --check \"./package.json\" \"./tsconfig.json\" \"./source/\""
+    "prepare": "tsc && build --copy-without-hash ./static/ && node ./build/renderer.mjs",
+    "start": "nodemon --watch ./package.json --watch ./tsconfig.json --watch ./source/ --watch ./static/ --ext \"*\" --exec \"npm run prepare && electron ./build/main.mjs\"",
+    "test": "npm run prepare && prettier --check ./package.json ./tsconfig.json ./source/"
   },
   "devDependencies": {
     "@electron/packager": "^18.3.6",
