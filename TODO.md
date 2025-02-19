@@ -1,12 +1,8 @@
 # TODO
 
-- `“Le-draw.app” is damaged and can’t be opened. You should move it to the Trash.`
-  - `xattr -c ./Le-draw.app`
-- Homebrew
-
-## Good to have
-
+- More documentation on what it does, how to install, and so forth.
 - Multiple monitors
 - Improve drawing
   - Smoothness factor depends on distance
   - Average last two points, and measure distance with respect to second to last
+- Sign & notarize, so we don’t get scary prompts on installation
