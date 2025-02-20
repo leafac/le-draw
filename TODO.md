@@ -1,6 +1,6 @@
 # TODO
 
-- More documentation on what it does, how to install, and so forth.
+- More documentation on what it does, how to install, how to enable on login, and so forth.
 - Multiple monitors
 - Improve drawing
   - Smoothness factor depends on distance
